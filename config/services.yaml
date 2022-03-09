@@ -40,3 +40,12 @@ services:
             - '@App\Service\LocaleService'
         tags:
             - { name: sylius.context.channel, priority: 1000 }
+                
+    App\Core\Shipping\Calculator\HeightShippingCalculator:
+        tags:
+            - {
+                name: sylius.shipping_calculator,
+                calculator: 'height_based',
+                form_type: 'App\Front\Admin\Shipping\Form\HeightShippingCalculatorForm',
+                label: 'Height based'
+            }
