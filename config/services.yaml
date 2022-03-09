@@ -33,3 +33,10 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+        
+    App\Context\LocaleChannelContext:
+        arguments:
+            - '@App\Service\ChannelService'
+            - '@App\Service\LocaleService'
+        tags:
+            - { name: sylius.context.channel, priority: 1000 }
