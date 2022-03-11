@@ -36,6 +36,15 @@
                 {{ resource.email }}
             </div>
         </div>
+        <div>
+            <div class="title">
+                <i class="dropdown icon"></i>
+                state
+            </div>
+            <div class="ui content">
+                {{ resource.state }}
+            </div>
+        </div>
     </div>
     {{ sylius_template_event([event_prefix, 'sylius.admin.show'], _context) }}
 {% endblock %}

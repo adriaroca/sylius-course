@@ -25,3 +25,15 @@ app_supplier_show:
         grid: app_admin_supplier_show
     type: sylius.resource
     prefix: '/%sylius_admin.path_name%'
+    
+app_admin_supplier_trust:
+    path: /admin/suppliers/{id}/trust
+    methods: [PUT]
+    defaults:
+        _controller: app.controller.supplier:applyStateMachineTransitionAction
+        _sylius:
+            state_machine:
+                graph: app_supplier
+                transition: trust
+            redirect: app_admin_supplier_index
+            flash: app.ui.supplier_trusted

@@ -1,1 +1,5 @@
 sylius.menu.admin.main.configuration.suppliers: 'Suppliers'
+app:
+    ui:
+        supplier_trusted: 'Supplier trusted'
+        trust: 'Trust'
