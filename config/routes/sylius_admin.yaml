@@ -5,3 +5,23 @@ sylius_admin:
 sylius_paypal_admin:
     resource: "@SyliusPayPalPlugin/Resources/config/admin_routing.yml"
     prefix: '/%sylius_admin.path_name%'
+    
+app_supplier:
+    resource: |
+        alias: app.supplier
+        except: ['show']
+        section: admin
+        templates: "@SyliusAdmin\\Crud"
+        grid: app_admin_supplier
+    type: sylius.resource
+    prefix: '/%sylius_admin.path_name%' 
+    
+app_supplier_show:
+    resource: |
+        alias: app.supplier
+        only: ['show']
+        section: admin
+        templates: "@SyliusAdmin\\Supplier"
+        grid: app_admin_supplier_show
+    type: sylius.resource
+    prefix: '/%sylius_admin.path_name%'

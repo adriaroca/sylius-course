@@ -1,0 +1,53 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.edit_'~metadata.name) %}
+{% set event_prefix = metadata.applicationName ~ '.admin.' ~ metadata.name ~ '.show' %}
+
+{% block title %}{{ header|trans }} {{ parent() }}{% endblock %}
+
+{# {% form_theme form '@SyliusAdmin/Form/theme.html.twig' %} #}
+
+{% block content %}
+    <div class="ui styled fluid accordion">
+        <div>
+            <div class="title">
+                <i class="dropdown icon"></i>
+                id
+            </div>
+            <div class="ui content">
+                {{ resource.id }}
+            </div>
+        </div>
+        <div>
+            <div class="title">
+                <i class="dropdown icon"></i>
+                name
+            </div>
+            <div class="ui content">
+                {{ resource.name }}
+            </div>
+        </div>
+        <div>
+            <div class="title">
+                <i class="dropdown icon"></i>
+                email
+            </div>
+            <div class="ui content">
+                {{ resource.email }}
+            </div>
+        </div>
+    </div>
+    {{ sylius_template_event([event_prefix, 'sylius.admin.show'], _context) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ sylius_template_event([event_prefix ~ '.stylesheets', 'sylius.admin.show.stylesheets'], { 'metadata': metadata }) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event([event_prefix ~ '.javascripts', 'sylius.admin.show.javascripts'], { 'metadata': metadata }) }}
+{% endblock %}

@@ -49,3 +49,10 @@ services:
                 form_type: 'App\Front\Admin\Shipping\Form\HeightShippingCalculatorForm',
                 label: 'Height based'
             }
+    App\Listener\AdminMainMenuListener:
+        tags:
+            - {
+                name: kernel.event_listener,
+                event: sylius.menu.admin.main,
+                method: addSupplier
+            }
