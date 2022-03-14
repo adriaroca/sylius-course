@@ -60,3 +60,7 @@ services:
         arguments:
             - '%app.model.supplier.class%'
     
+    App\Core\Shipping\Assigner\ShipmentCodeAssignerInterface:
+        class: App\Core\Shipping\Assigner\ShipmentCodeAssigner
+        arguments: [ '@App\Provider\ShipmentRandomCodeProviderInterface', '@sylius.manager.shipment' ]
+        public: true

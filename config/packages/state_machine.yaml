@@ -11,3 +11,10 @@ winzou_state_machine:
             trust:
                 from: [new]
                 to: trusted
+    sylius_shipment:
+        callbacks:
+            after:
+                assign_shipment_code:
+                    on: ['ship']
+                    do: ['@App\Core\Shipping\Assigner\ShipmentCodeAssignerInterface', 'assign']
+                    args: ['object']
